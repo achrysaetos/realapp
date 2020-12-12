@@ -14,10 +14,12 @@ app.get('/', (req, res) => {
 })
 
 app.get('/db', (req, res) => {
+    // add security
     console.log('lol')
     res.json(db)
 })
 app.post('/db', (req, res) => {
+    // add security
     const input = req.body
     console.log(input)
     if (input) {
