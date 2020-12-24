@@ -22,20 +22,14 @@ export default function App() {
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
-          <Route path="/products">
-            <Products />
+          <Route path="/home">
+            <Home />
           </Route>
           <Route path="/features">
             <Features />
           </Route>
           <Route path="/pricing">
             <Pricing />
-          </Route>
-          <Route path="/about">
-            <About />
-          </Route>
-          <Route path="/contact_us">
-            <Contact />
           </Route>
           <Route path="/">
             <Home />
@@ -50,18 +44,9 @@ export default function App() {
 }
 
 
-function Products() {
-  return <h2>About</h2>;
-}
 function Features() {
-  return <h2>About</h2>;
+  return <h2></h2>;
 }
 function Pricing() {
-  return <h2>About</h2>;
-}
-function About() {
-  return <h2>About</h2>;
-}
-function Contact() {
-  return <h2>Users</h2>;
+  return <h2></h2>;
 }
