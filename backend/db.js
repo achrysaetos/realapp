@@ -1,12 +1,13 @@
 
 const {MongoClient} = require('mongodb');
+const { URI } = require('./config');
 
 async function main(){
     /**
      * Connection URI. Update <username>, <password>, and <your-cluster-url> to reflect your cluster.
      * See https://docs.mongodb.com/ecosystem/drivers/node/ for more details
      */
-    const uri = "mongodb+srv://achrysaetos:1wzZ2TzEfNNA5FYR@cluster0.jjeek.mongodb.net/realapp?retryWrites=true&w=majority";
+    const uri = URI;
  
 
     const client = new MongoClient(uri);
