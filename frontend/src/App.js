@@ -45,8 +45,8 @@ export default function App() {
 
 
 function Features() {
-  return <h2></h2>;
+  return <h2>Features</h2>;
 }
 function Pricing() {
-  return <h2></h2>;
+  return <h2>Pricing</h2>;
 }
