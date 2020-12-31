@@ -20,6 +20,7 @@ function generateToken(user) {
 
 module.exports = {
   Mutation: {
+
     async login(_, { username, password }) {
       const { errors, valid } = validateLoginInput(username, password);
 
@@ -48,12 +49,8 @@ module.exports = {
         token
       };
     },
-    async register(
-      _,
-      {
-        registerInput: { username, email, password, confirmPassword }
-      }
-    ) {
+
+    async register(_, {registerInput: { username, email, password, confirmPassword }}) {
       // Validate user data
       const { valid, errors } = validateRegisterInput(
         username,
@@ -61,10 +58,12 @@ module.exports = {
         password,
         confirmPassword
       );
+
       if (!valid) {
         throw new UserInputError('Errors', { errors });
       }
-      // TODO: Make sure user doesnt already exist
+      
+      // make sure user doesnt already exist
       const user = await User.findOne({ username });
       if (user) {
         throw new UserInputError('Username is taken', {
