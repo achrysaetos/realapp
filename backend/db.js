@@ -8,7 +8,7 @@ const { URI } = require('./config')
 
 
 const server = new ApolloServer({
-    typeDefs, resolvers
+    typeDefs, resolvers, context: ({req}) => ({req}) 
 })
 
 mongoose
