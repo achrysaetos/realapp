@@ -33,7 +33,7 @@ export default function PostCard({
         <Card.Description>{body}</Card.Description>
       </Card.Content>
       <Card.Content extra>
-        <Button as="div" labelPosition="right" onclick={likePost}>
+        <Button as="div" labelPosition="right" onClick={likePost}>
             <Button color="teal" basic>
               <Icon name="heart" />
             </Button>
@@ -41,7 +41,7 @@ export default function PostCard({
               {likeCount}
             </Label>
         </Button>
-        <Button as="div" labelPosition="right" onclick={commentOnPost}>
+        <Button as="div" labelPosition="right" onClick={commentOnPost}>
             <Button color="blue" basic>
               <Icon name="comments" />
             </Button>
