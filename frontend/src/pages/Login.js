@@ -10,10 +10,7 @@ export default function Login(props) {
   const context = useContext(AuthContext);
   const [errors, setErrors] = useState({});
   
-  const { onChange, onSubmit, values } = useForm(loginUserCallback, {
-    username: '',
-    password: ''
-  });
+  const { onChange, onSubmit, values } = useForm(loginUserCallback, {username: '', password: ''});
 
   const [loginUser, { loading }] = useMutation(LOGIN_USER, {
     update(_, {data: { login: userData }}) {

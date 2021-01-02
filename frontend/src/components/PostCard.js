@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Button, Card, Icon, Label, Image } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import moment from "moment";
@@ -10,7 +10,9 @@ import MyPopup from '../util/MyPopup'; */
 
 export default function PostCard({
   post: { body, createdAt, id, username, likeCount, commentCount, likes },
-}) {
+})
+  
+{
   //const { user } = useContext(AuthContext);
   function likePost(){
       console.log("Like")
