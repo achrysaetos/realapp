@@ -18,12 +18,7 @@ export default function Register(props) {
   });
 
   const [addUser, { loading }] = useMutation(REGISTER_USER, {
-    update(
-      _,
-      {
-        data: { register: userData }
-      }
-    ) {
+    update(_, {data: { register: userData }}){
       context.login(userData);
       props.history.push('/');
     },
@@ -39,11 +34,12 @@ export default function Register(props) {
 
   return (
     <div className="form-container">
+
       <Form onSubmit={onSubmit} noValidate className={loading ? 'loading' : ''}>
         <h1>Register</h1>
         <Form.Input
           label="Username"
-          placeholder="Username.."
+          placeholder="Username"
           name="username"
           type="text"
           value={values.username}
@@ -52,7 +48,7 @@ export default function Register(props) {
         />
         <Form.Input
           label="Email"
-          placeholder="Email.."
+          placeholder="Email"
           name="email"
           type="email"
           value={values.email}
@@ -61,7 +57,7 @@ export default function Register(props) {
         />
         <Form.Input
           label="Password"
-          placeholder="Password.."
+          placeholder="Password"
           name="password"
           type="password"
           value={values.password}
@@ -70,7 +66,7 @@ export default function Register(props) {
         />
         <Form.Input
           label="Confirm Password"
-          placeholder="Confirm Password.."
+          placeholder="Confirm Password"
           name="confirmPassword"
           type="password"
           value={values.confirmPassword}
@@ -81,6 +77,7 @@ export default function Register(props) {
           Register
         </Button>
       </Form>
+
       {Object.keys(errors).length > 0 && (
         <div className="ui error message">
           <ul className="list">
@@ -90,6 +87,7 @@ export default function Register(props) {
           </ul>
         </div>
       )}
+
     </div>
   );
 }
@@ -116,4 +114,4 @@ const REGISTER_USER = gql`
       token
     }
   }
-`;
+`

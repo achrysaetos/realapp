@@ -9,19 +9,14 @@ import { useForm } from '../util/hooks';
 export default function Login(props) {
   const context = useContext(AuthContext);
   const [errors, setErrors] = useState({});
-
+  
   const { onChange, onSubmit, values } = useForm(loginUserCallback, {
     username: '',
     password: ''
   });
 
   const [loginUser, { loading }] = useMutation(LOGIN_USER, {
-    update(
-      _,
-      {
-        data: { login: userData }
-      }
-    ) {
+    update(_, {data: { login: userData }}) {
       context.login(userData);
       props.history.push('/');
     },
@@ -37,11 +32,12 @@ export default function Login(props) {
 
   return (
     <div className="form-container">
+
       <Form onSubmit={onSubmit} noValidate className={loading ? 'loading' : ''}>
         <h1>Login</h1>
         <Form.Input
           label="Username"
-          placeholder="Username.."
+          placeholder="Username"
           name="username"
           type="text"
           value={values.username}
@@ -50,7 +46,7 @@ export default function Login(props) {
         />
         <Form.Input
           label="Password"
-          placeholder="Password.."
+          placeholder="Password"
           name="password"
           type="password"
           value={values.password}
@@ -61,6 +57,7 @@ export default function Login(props) {
           Login
         </Button>
       </Form>
+
       {Object.keys(errors).length > 0 && (
         <div className="ui error message">
           <ul className="list">
@@ -70,6 +67,7 @@ export default function Login(props) {
           </ul>
         </div>
       )}
+
     </div>
   );
 }
@@ -84,4 +82,4 @@ const LOGIN_USER = gql`
       token
     }
   }
-`;
+`
