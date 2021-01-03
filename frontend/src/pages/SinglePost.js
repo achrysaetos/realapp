@@ -1,5 +1,4 @@
 import React, { useContext, useState, useRef } from 'react';
-import gql from 'graphql-tag';
 import { useQuery, useMutation } from '@apollo/react-hooks';
 import moment from 'moment';
 import {Button, Card, Form, Grid, Image, Icon, Label} from 'semantic-ui-react';
@@ -7,6 +6,8 @@ import {Button, Card, Form, Grid, Image, Icon, Label} from 'semantic-ui-react';
 import { AuthContext } from '../context/auth';
 import LikeButton from '../components/LikeButton';
 import DeleteButton from '../components/DeleteButton';
+import { SUBMIT_COMMENT_MUTATION } from "../graphql/SUBMIT_COMMENT_MUTATION"
+import { FETCH_POST_QUERY } from "../graphql/FETCH_POST_QUERY"
 //import MyPopup from '../util/MyPopup';
 
 export default function SinglePost(props) {
@@ -142,40 +143,3 @@ export default function SinglePost(props) {
   }
   return postMarkup;
 }
-
-const SUBMIT_COMMENT_MUTATION = gql`
-  mutation($postId: String!, $body: String!) {
-    createComment(postId: $postId, body: $body) {
-      id
-      comments {
-        id
-        body
-        createdAt
-        username
-      }
-      commentCount
-    }
-  }
-`
-
-const FETCH_POST_QUERY = gql`
-  query($postId: ID!) {
-    getPost(postId: $postId) {
-      id
-      body
-      createdAt
-      username
-      likeCount
-      likes {
-        username
-      }
-      commentCount
-      comments {
-        id
-        username
-        createdAt
-        body
-      }
-    }
-  }
-`

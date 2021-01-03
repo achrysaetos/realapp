@@ -1,9 +1,10 @@
 import React, {useState} from "react"
-import gql from "graphql-tag"
 import {useMutation} from "@apollo/react-hooks"
 import {Button, Confirm, Icon} from "semantic-ui-react"
 
-import {FETCH_POSTS_QUERY, FETCH_POST_QUERY} from "../util/graphql"
+import {FETCH_POSTS_QUERY} from "../graphql/FETCH_POSTS_QUERY"
+import {DELETE_COMMENT_MUTATION} from "../graphql/DELETE_COMMENT_MUTATION"
+import {DELETE_POST_MUTATION} from "../graphql/DELETE_POST_MUTATION"
 
 export default function DeleteButton({postId, commentId, callback}){
     const [confirmOpen, setConfirmOpen] = useState(false)
@@ -34,24 +35,3 @@ export default function DeleteButton({postId, commentId, callback}){
         </>
     )
 }
-
-const DELETE_POST_MUTATION = gql`
-    mutation deletePost($postId: ID!){
-        deletePost(postId: $postId)
-    }
-`
-
-const DELETE_COMMENT_MUTATION = gql`
-    mutation deleteComment($postId: ID!, $commentId: ID!){
-        deleteComment(postId: $postId, commentId: $commentId){
-            id
-            comments{
-                id
-                username
-                createdAt
-                body
-            }
-            commentCount
-        }
-    }
-`

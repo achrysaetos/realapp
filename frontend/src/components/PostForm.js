@@ -1,10 +1,10 @@
 import React from 'react';
 import { Button, Form } from 'semantic-ui-react';
-import gql from 'graphql-tag';
 import { useMutation } from '@apollo/react-hooks';
 
 import { useForm } from '../util/hooks';
-import { FETCH_POSTS_QUERY } from '../util/graphql';
+import { FETCH_POSTS_QUERY } from '../graphql/FETCH_POSTS_QUERY';
+import { CREATE_POST_MUTATION } from '../graphql/CREATE_POST_MUTATION';
 
 export default function PostForm() {
   const { values, onChange, onSubmit } = useForm(createPostCallback, {body: ''});
@@ -16,6 +16,7 @@ export default function PostForm() {
         query: FETCH_POSTS_QUERY
       });
       data.getPosts = [result.data.createPost, ...data.getPosts];
+      console.log(data.getPosts)
       proxy.writeQuery({ query: FETCH_POSTS_QUERY, data });
       values.body = '';
     }
@@ -52,27 +53,3 @@ export default function PostForm() {
     </>
   );
 }
-
-const CREATE_POST_MUTATION = gql`
-  mutation createPost($body: String!) {
-    createPost(body: $body) {
-      id
-      body
-      createdAt
-      username
-      likes {
-        id
-        username
-        createdAt
-      }
-      likeCount
-      comments {
-        id
-        body
-        username
-        createdAt
-      }
-      commentCount
-    }
-  }
-`
