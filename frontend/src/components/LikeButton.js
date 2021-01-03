@@ -16,9 +16,7 @@ export default function LikeButton({ user, post: { id, likeCount, likes } }) {
     }
   }, [user, likes])
 
-  const [likePost] = useMutation(LIKE_POST_MUTATION, {
-    variables: { postId: id },
-  })
+  const [likePost] = useMutation(LIKE_POST_MUTATION, { variables: { postId: id } })
 
   const likeButton = user ? (
     liked ? (

@@ -7,22 +7,18 @@ import { FETCH_POSTS_QUERY } from "../graphql/FETCH_POSTS_QUERY"
 import { CREATE_POST_MUTATION } from "../graphql/CREATE_POST_MUTATION"
 
 export default function PostForm() {
-  const { values, onChange, onSubmit } = useForm(createPostCallback, {
-    body: "",
-  })
+  const { values, onChange, onSubmit } = useForm(createPostCallback, { body: "" })
 
   const [createPost, { error }] = useMutation(CREATE_POST_MUTATION, {
     variables: values,
     update(proxy, result) {
-      const data = proxy.readQuery({
-        query: FETCH_POSTS_QUERY,
-      })
+      const data = proxy.readQuery({ query: FETCH_POSTS_QUERY })
       proxy.writeQuery({
         query: FETCH_POSTS_QUERY,
         data: { getPosts: [result.data.createPost, ...data.getPosts] },
       })
       values.body = ""
-    },
+    }
   })
 
   function createPostCallback() {
@@ -46,6 +42,7 @@ export default function PostForm() {
           </Button>
         </Form.Field>
       </Form>
+      
       {error && (
         <div className="ui error message" style={{ marginBottom: 20 }}>
           <ul className="list">
