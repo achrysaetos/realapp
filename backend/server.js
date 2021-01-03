@@ -1,34 +1,17 @@
-const express = require('express')
-const app = express()
-const port = 8080
+const { ApolloServer } = require("apollo-server")
+const mongoose = require("mongoose")
 
-const bodyParser = require('body-parser');
-app.use(bodyParser.json()); // support json encoded bodies
-app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
+const typeDefs = require("./graphql/typeDefs")
+const resolvers = require("./graphql/resolvers")
+const { URI } = require("./config")
 
-const db = []
+const server = new ApolloServer({ typeDefs, resolvers, context: ({ req }) => ({ req }) })
 
-app.get('/', (req, res) => {
-//   res.send('Hello World!')
-    res.json({"message": "Hello world"})
-})
-
-app.get('/db', (req, res) => {
-    // add security
-    console.log('lol')
-    res.json(db)
-})
-app.post('/db', (req, res) => {
-    // add security
-    const input = req.body
-    console.log(input)
-    if (input) {
-        db.push(input.newTodo)
-    }
-    res.json(db)
-})
-  
-
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
-})
+mongoose
+  .connect(URI, { useNewUrlParser: true })
+  .then(() => {
+    return server.listen({ port: 5000 })
+  })
+  .then((res) => {
+    console.log(`Server running at ${res.url}`)
+  })
