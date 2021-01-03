@@ -1,36 +1,38 @@
-import React, { useContext, useState } from 'react';
-import { Button, Form } from 'semantic-ui-react';
-import { useMutation } from '@apollo/react-hooks';
+import React, { useContext, useState } from "react"
+import { Button, Form } from "semantic-ui-react"
+import { useMutation } from "@apollo/react-hooks"
 
-import { AuthContext } from '../context/auth';
-import { useForm } from '../util/hooks';
-import {LOGIN_USER} from "../graphql/LOGIN_USER"
+import { AuthContext } from "../context/auth"
+import { useForm } from "../util/hooks"
+import { LOGIN_USER } from "../graphql/LOGIN_USER"
 
 export default function Login(props) {
-  const context = useContext(AuthContext);
-  const [errors, setErrors] = useState({});
-  
-  const { onChange, onSubmit, values } = useForm(loginUserCallback, {username: '', password: ''});
+  const context = useContext(AuthContext)
+  const [errors, setErrors] = useState({})
+
+  const { onChange, onSubmit, values } = useForm(loginUserCallback, {
+    username: "",
+    password: "",
+  })
 
   const [loginUser, { loading }] = useMutation(LOGIN_USER, {
-    update(_, {data: { login: userData }}) {
-      context.login(userData);
-      props.history.push('/');
+    update(_, { data: { login: userData } }) {
+      context.login(userData)
+      props.history.push("/")
     },
     onError(err) {
-      setErrors(err.graphQLErrors[0].extensions.exception.errors);
+      setErrors(err.graphQLErrors[0].extensions.exception.errors)
     },
-    variables: values
-  });
+    variables: values,
+  })
 
   function loginUserCallback() {
-    loginUser();
+    loginUser()
   }
 
   return (
     <div className="form-container">
-
-      <Form onSubmit={onSubmit} noValidate className={loading ? 'loading' : ''}>
+      <Form onSubmit={onSubmit} noValidate className={loading ? "loading" : ""}>
         <h1>Login</h1>
         <Form.Input
           label="Username"
@@ -64,7 +66,7 @@ export default function Login(props) {
           </ul>
         </div>
       )}
-
     </div>
-  );
+  )
+  
 }

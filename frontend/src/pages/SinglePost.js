@@ -1,48 +1,54 @@
-import React, { useContext, useState, useRef } from 'react';
-import { useQuery, useMutation } from '@apollo/react-hooks';
-import moment from 'moment';
-import {Button, Card, Form, Grid, Image, Icon, Label} from 'semantic-ui-react';
+import React, { useContext, useState, useRef } from "react"
+import { useQuery, useMutation } from "@apollo/react-hooks"
+import moment from "moment"
+import {
+  Button,
+  Card,
+  Form,
+  Grid,
+  Image,
+  Icon,
+  Label,
+} from "semantic-ui-react"
 
-import { AuthContext } from '../context/auth';
-import LikeButton from '../components/LikeButton';
-import DeleteButton from '../components/DeleteButton';
+import { AuthContext } from "../context/auth"
+import LikeButton from "../components/LikeButton"
+import DeleteButton from "../components/DeleteButton"
 import { SUBMIT_COMMENT_MUTATION } from "../graphql/SUBMIT_COMMENT_MUTATION"
 import { FETCH_POST_QUERY } from "../graphql/FETCH_POST_QUERY"
-//import MyPopup from '../util/MyPopup';
+//import MyPopup from '../util/MyPopup'
 
 export default function SinglePost(props) {
-  const postId = props.match.params.postId;
-  const { user } = useContext(AuthContext);
-  const commentInputRef = useRef(null);
+  const postId = props.match.params.postId
+  const { user } = useContext(AuthContext)
+  const commentInputRef = useRef(null)
 
-  const [comment, setComment] = useState('');
+  const [comment, setComment] = useState("")
 
-  const {
-    data: { getPost } = {}
-  } = useQuery(FETCH_POST_QUERY, {
+  const { data: { getPost } = {} } = useQuery(FETCH_POST_QUERY, {
     variables: {
-      postId
-    }
-  });
+      postId,
+    },
+  })
 
   const [submitComment] = useMutation(SUBMIT_COMMENT_MUTATION, {
     update() {
-      setComment('');
-      commentInputRef.current.blur();
+      setComment("")
+      commentInputRef.current.blur()
     },
     variables: {
       postId,
-      body: comment
-    }
-  });
+      body: comment,
+    },
+  })
 
   function deletePostCallback() {
-    props.history.push('/');
+    props.history.push("/")
   }
 
-  let postMarkup;
+  let postMarkup
   if (!getPost) {
-    postMarkup = <p>Loading post..</p>;
+    postMarkup = <p>Loading post..</p>
   } else {
     const {
       id,
@@ -52,8 +58,8 @@ export default function SinglePost(props) {
       comments,
       likes,
       likeCount,
-      commentCount
-    } = getPost;
+      commentCount,
+    } = getPost
 
     postMarkup = (
       <Grid>
@@ -112,7 +118,7 @@ export default function SinglePost(props) {
                       <button
                         type="submit"
                         className="ui button teal"
-                        disabled={comment.trim() === ''}
+                        disabled={comment.trim() === ""}
                         onClick={submitComment}
                       >
                         Submit
@@ -135,11 +141,11 @@ export default function SinglePost(props) {
                 </Card.Content>
               </Card>
             ))}
-
           </Grid.Column>
         </Grid.Row>
       </Grid>
-    );
+    )
   }
-  return postMarkup;
+
+  return postMarkup
 }
