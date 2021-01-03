@@ -93,6 +93,7 @@ export default function SinglePost(props) {
                 )}
               </Card.Content>
             </Card>
+
             {user && (
               <Card fluid>
                 <Card.Content>
@@ -120,6 +121,7 @@ export default function SinglePost(props) {
                 </Card.Content>
               </Card>
             )}
+
             {comments.map((comment) => (
               <Card fluid key={comment.id}>
                 <Card.Content>
@@ -132,6 +134,7 @@ export default function SinglePost(props) {
                 </Card.Content>
               </Card>
             ))}
+
           </Grid.Column>
         </Grid.Row>
       </Grid>
@@ -153,7 +156,7 @@ const SUBMIT_COMMENT_MUTATION = gql`
       commentCount
     }
   }
-`;
+`
 
 const FETCH_POST_QUERY = gql`
   query($postId: ID!) {
@@ -175,4 +178,4 @@ const FETCH_POST_QUERY = gql`
       }
     }
   }
-`;
+`
