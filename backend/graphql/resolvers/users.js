@@ -13,7 +13,7 @@ function generateToken(user) {
 module.exports = {
   Mutation: {
     async login(_, { username, password }) {
-      const { errors, valid } = validateLoginInput(username, password)
+      const { errors, valid } = validateLoginInput(username, password) // catches errors in login input strings
 
       if (!valid) {
         throw new UserInputError("Errors", { errors })
@@ -29,8 +29,8 @@ module.exports = {
         throw new UserInputError("Wrong crendetials", { errors })
       }
 
-      const token = generateToken(user)
-      return { ...user._doc, id: user._id, token }
+      const token = generateToken(user) // create a new token for the user using jwt
+      return { ...user._doc, id: user._id, token } // deep copy from user._doc but with custom id and token
     },
 
     async register(_, { registerInput: { username, email, password, confirmPassword } }) {

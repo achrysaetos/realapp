@@ -8,9 +8,9 @@
 **graphql**\
 &nbsp; **resolvers/**\
 &nbsp; &nbsp; **comments.js/** -- \
-&nbsp; &nbsp; **index.js/** -- \
+&nbsp; &nbsp; **index.js/** -- combines all the resolvers so you can actually use them\
 &nbsp; &nbsp; **post.js/** -- \
-&nbsp; &nbsp; **users.js/** -- \
+&nbsp; &nbsp; **users.js/** -- login and register users\
 &nbsp; **typeDefs** -- defines your schema's types (the types of data a client can read and write to your data graph)
 
 **models/**\
