@@ -1,5 +1,10 @@
-const { gql } = require("apollo-server");
+const { gql } = require("apollo-server")
 
+/*
+type [Object] -- list of fields that represents an object that an application client might need to interact with
+type Query -- list of available commands that allows clients to fetch the objects that exist in our data graph
+type Mutation -- list of available commands that allows clients to modify data
+*/
 module.exports = gql`
   type Post {
     id: ID!
@@ -35,6 +40,7 @@ module.exports = gql`
     confirmPassword: String!
     email: String!
   }
+  
   type Query {
     getPosts: [Post]
     getPost(postId: ID!): Post

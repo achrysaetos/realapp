@@ -1,7 +1,15 @@
+# BACKEND
+
+...
+
 
 ## Important files and folders:
 
-**graphql/**
+**graphql/resolvers/comments.js** -- 
+**graphql/resolvers/index.js** -- 
+**graphql/resolvers/post.js** -- 
+**graphql/resolvers/users.js** -- 
+**graphql/typeDefs** -- defines your schema's types & what types of data a client can read and write to your data graph
 
 **models/** -- set up document organization and type declarations for your data
 
