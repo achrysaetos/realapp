@@ -18,8 +18,8 @@ const postSchema = new Schema({
     }
   ],
   user: {
-    type: Schema.Types.ObjectId,
-    ref: 'users'
+    type: Schema.Types.ObjectId, // lets you reference documents in other collections
+    ref: 'users' // tells mongoose which model to use during population
   }
 })
 
