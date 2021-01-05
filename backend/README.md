@@ -1,6 +1,9 @@
 # BACKEND
 
-Set up access to your database (server.js), set up document organization (models/), create queries and mutations to read and write data (graphql/), and validate user input and authorization (util/)
+* Set up access to your database *(server.js)*
+* Set up document organization *(models/)*
+* Create queries and mutations to read and write data *(graphql/)*
+* Validate user input and authorization *(util/)*
 
 
 ## Important files and folders:
