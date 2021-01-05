@@ -1,5 +1,4 @@
 const { AuthenticationError, UserInputError } = require("apollo-server")
-const { argsToArgsConfig } = require("graphql/type/definition")
 
 const Post = require("../../models/Post")
 const checkAuth = require("../../util/check-auth")
@@ -8,7 +7,7 @@ module.exports = {
   Query: {
     async getPosts() {
       try {
-        const posts = await Post.find().sort({ createdAt: -1 })
+        const posts = await Post.find().sort({ createdAt: -1 }) // latest posts first
         return posts
       } catch (err) {
         throw new Error(err)
@@ -31,7 +30,7 @@ module.exports = {
 
   Mutation: {
     async createPost(_, { body }, context) {
-      const user = checkAuth(context)
+      const user = checkAuth(context) // check if user is logged in
       if (body.trim() === "") {
         throw new Error("Post body must not be empty")
       }
@@ -49,7 +48,7 @@ module.exports = {
       const user = checkAuth(context)
       try {
         const post = await Post.findById(postId)
-        if (user.username === post.username) {
+        if (user.username === post.username) { // if user created the post
           await post.delete()
           return "Post deleted successfully"
         } else {
@@ -64,8 +63,9 @@ module.exports = {
       const { username } = checkAuth(context)
       const post = await Post.findById(postId)
       if (post) {
-        if (post.likes.find((like) => like.username === username)) {
-          post.likes = post.likes.filter((like) => like.username !== username)
+        if (post.likes.find((like) => like.username === username)) { // if username is already listed in post.likes
+           // set post.likes to consist of all the elements that aren't associated with username
+           post.likes = post.likes.filter((like) => like.username !== username)
         } else {
           post.likes.push({ username, createdAt: new Date().toISOString() })
         }

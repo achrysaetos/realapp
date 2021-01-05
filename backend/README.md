@@ -1,16 +1,16 @@
 # BACKEND
 
-...
+Set up access to your database (server.js), set up document organization (models/), create queries and mutations to read and write data (graphql/), and validate user input and authorization (util/)
 
 
 ## Important files and folders:
 
 **graphql**\
 &nbsp; **resolvers/**\
-&nbsp; &nbsp; **comments.js/** -- \
+&nbsp; &nbsp; **comments.js/** -- mutations for creating and deleting comments\
 &nbsp; &nbsp; **index.js/** -- combines all the resolvers so you can actually use them\
-&nbsp; &nbsp; **post.js/** -- \
-&nbsp; &nbsp; **users.js/** -- login and register users\
+&nbsp; &nbsp; **post.js/** -- queries for getting single/multiple posts, and mutations for creating/deleting/liking posts\
+&nbsp; &nbsp; **users.js/** -- mutations for logging in and registering users\
 &nbsp; **typeDefs** -- defines your schema's types (the types of data a client can read and write to your data graph)
 
 **models/**\
