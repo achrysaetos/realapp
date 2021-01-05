@@ -2,7 +2,7 @@
 
 * ... *(src/components/)*
 * ... *(src/context/)*
-* ... *(src/graphql/)*
+* Create queries and mutations to update the database *(src/graphql/)*
 * ... *(src/pages/)*
 * ... *(src/util/)*
 * ... *(src/ApolloProvider.js)*
@@ -16,22 +16,22 @@
 
 **src**\
 &nbsp; **components/**\
-&nbsp; &nbsp; **DeleteButton.js/** -- \
-&nbsp; &nbsp; **LikeButton.js/** -- \
-&nbsp; &nbsp; **MenuBar.js/** -- \
-&nbsp; &nbsp; **PostCard.js/** -- \
+&nbsp; &nbsp; **DeleteButton.js** -- \
+&nbsp; &nbsp; **LikeButton.js** -- \
+&nbsp; &nbsp; **MenuBar.js** -- \
+&nbsp; &nbsp; **PostCard.js** -- \
 &nbsp; **context/**\
-&nbsp; &nbsp; **auth.js/** -- \
+&nbsp; &nbsp; **auth.js** -- \
 &nbsp; **graphql/**\
-&nbsp; &nbsp; **.../** -- \
+&nbsp; &nbsp; **...** -- create queries and mutations to update the database\
 &nbsp; **pages/**\
-&nbsp; &nbsp; **Home.js/** -- \
-&nbsp; &nbsp; **Login.js/** -- \
-&nbsp; &nbsp; **Register.js/** -- \
-&nbsp; &nbsp; **SinglePost.js/** -- \
+&nbsp; &nbsp; **Home.js** -- \
+&nbsp; &nbsp; **Login.js** -- \
+&nbsp; &nbsp; **Register.js** -- \
+&nbsp; &nbsp; **SinglePost.js** -- \
 &nbsp; **util/**\
-&nbsp; &nbsp; **AuthRoute.js/** -- \
-&nbsp; &nbsp; **hooks.js/** -- 
+&nbsp; &nbsp; **AuthRoute.js** -- \
+&nbsp; &nbsp; **hooks.js** -- 
 
 &nbsp; **ApolloProvider.js** -- 
 
