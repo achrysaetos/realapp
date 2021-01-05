@@ -1,8 +1,8 @@
 
 module.exports.validateRegisterInput = (username, email, password, confirmPassword) => {
-  const errors = {}
-  if (username.trim() === "") {
-    errors.username = "Username must not be empty"
+  const errors = {} // create an error object to keep track of all the errors
+  if (username.trim() === "") { // trim() removes whitespace from both ends of a string
+    errors.username = "Username must not be empty" // add error message for username to the error object
   }
   if (email.trim() === "") {
     errors.email = "Email must not be empty"
@@ -18,7 +18,7 @@ module.exports.validateRegisterInput = (username, email, password, confirmPasswo
     errors.confirmPassword = "Passwords must match"
   }
 
-  return { errors, valid: Object.keys(errors).length < 1 }
+  return { errors, valid: Object.keys(errors).length < 1 } // display errors if they exist, else must be valid
 }
 
 module.exports.validateLoginInput = (username, password) => {
