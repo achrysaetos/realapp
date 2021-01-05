@@ -23,6 +23,7 @@
 &nbsp; **context/**\
 &nbsp; &nbsp; **auth.js/** -- \
 &nbsp; **graphql/**\
+&nbsp; &nbsp; **.../** -- \
 &nbsp; **pages/**\
 &nbsp; &nbsp; **Home.js/** -- \
 &nbsp; &nbsp; **Login.js/** -- \
@@ -30,7 +31,7 @@
 &nbsp; &nbsp; **SinglePost.js/** -- \
 &nbsp; **util/**\
 &nbsp; &nbsp; **AuthRoute.js/** -- \
-&nbsp; &nbsp; **hooks.js/** -- \
+&nbsp; &nbsp; **hooks.js/** -- 
 
 &nbsp; **ApolloProvider.js** -- 
 
@@ -49,4 +50,4 @@
 
 **craco.config.js** -- necessary for tailwind, because create react app doesn't let you override the PostCSS configuration natively
 
-**tailwind.config.js** -- configure tailwind, generated from running "npx tailwindcss init"
+**tailwind.config.js** -- configure tailwind, generated from running `npx tailwindcss init`
