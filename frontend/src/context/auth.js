@@ -1,9 +1,14 @@
 import React, { useReducer, createContext } from "react"
 import jwtDecode from "jwt-decode"
 
-const initialState = { user: null }
+// no token yet b/c we haven't verified the user yet
+const initialState = { user: null } 
 
-if (localStorage.getItem("jwtToken")) {
+// used with useContext to let you read the context and subscribe to its changes, in order to verify that the user exists
+const AuthContext = createContext({ user: null, login: (userData) => {}, logout: () => {} })
+
+// if a token exists and isn't expired, user in initialState is set to the decodedToken
+if (localStorage.getItem("jwtToken")) { 
   const decodedToken = jwtDecode(localStorage.getItem("jwtToken"))
   if (decodedToken.exp * 1000 < Date.now()) {
     localStorage.removeItem("jwtToken")
@@ -12,9 +17,8 @@ if (localStorage.getItem("jwtToken")) {
   }
 }
 
-const AuthContext = createContext({ user: null, login: (userData) => {}, logout: () => {} })
-
-function authReducer(state, action) {
+// determines changes to the state using the action it receives
+function authReducer(state, action) { 
   switch (action.type) {
     case "LOGIN":
       return { ...state, user: action.payload }
@@ -25,23 +29,24 @@ function authReducer(state, action) {
   }
 }
 
-function AuthProvider(props) {
+// use initialState and authReducer from the above functions
+function AuthProvider(props) { 
   const [state, dispatch] = useReducer(authReducer, initialState)
 
-  function login(userData) {
+  function login(userData) { // put token in local storage
     localStorage.setItem("jwtToken", userData.token)
     dispatch({ type: "LOGIN", payload: userData })
   }
 
-  function logout() {
+  function logout() { // remove token from local storage
     localStorage.removeItem("jwtToken")
     dispatch({ type: "LOGOUT" })
   }
 
   return (
     <AuthContext.Provider
-      value={{ user: state.user, login, logout }}
-      {...props}
+      value={{ user: state.user, login, logout }} // pass these to the components between the AuthProvider tags
+      {...props} // deep copy from props since we might get some props from the top-down component
     />
   )
   
