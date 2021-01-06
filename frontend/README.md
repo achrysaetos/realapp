@@ -8,8 +8,8 @@
 * Allow react to access your graphql server *(src/ApolloProvider.js)*
 * Write standard css for your app *(src/App.css)*
 * Serve each component of your app *(src/App.js)*
-* Set up access to tailwind's styles *(src/index.css)*
-* Entry point to your app *(src/index.js)*
+* Allow your app access to tailwind's styles *(src/index.css)*
+* Create the entry point to your app *(src/index.js)*
 
 
 ## Important files and folders:
@@ -41,7 +41,7 @@
 
 &nbsp; **index.css** -- use tailwind's `base`, `components`, and `utilities` styles
 
-&nbsp; **index.js** -- entry point to your app
+&nbsp; **index.js** -- create the entry point to your app
 
 
 ## Others:
