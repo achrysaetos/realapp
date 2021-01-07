@@ -10,12 +10,12 @@ export default function Login(props) {
   const context = useContext(AuthContext)
   const [errors, setErrors] = useState({})
 
-  const { onChange, onSubmit, values } = useForm(loginUserCallback, { username: "", password: "" })
+  const { onChange, onSubmit, values } = useForm(loginUserCallback, { username: "", password: "" }) // from ../util/hooks.js
 
-  const [loginUser, { loading }] = useMutation(LOGIN_USER, {
+  const [loginUser, { loading }] = useMutation(LOGIN_USER, { // call the LOGIN_USER mutation
     update(_, { data: { login: userData } }) {
-      context.login(userData)
-      props.history.push("/")
+      context.login(userData) // set the user token and userData payload, from ../context/auth.js
+      props.history.push("/") // direct to home
     },
     onError(err) {
       setErrors(err.graphQLErrors[0].extensions.exception.errors)
@@ -23,13 +23,13 @@ export default function Login(props) {
     variables: values
   })
 
-  function loginUserCallback() {
+  function loginUserCallback() { // lets you call loginUser() inside the useForm function above
     loginUser()
   }
 
   return (
     <div className="form-container">
-      <Form onSubmit={onSubmit} noValidate className={loading ? "loading" : ""}>
+      <Form onSubmit={onSubmit} noValidate className={loading ? "loading" : ""}> {/* not actually submitted */}
         <h1>Login</h1>
         <Form.Input
           label="Username"
@@ -38,7 +38,7 @@ export default function Login(props) {
           type="text"
           value={values.username}
           error={errors.username ? true : false}
-          onChange={onChange}
+          onChange={onChange} // change the value of the input in real time
         />
         <Form.Input
           label="Password"
@@ -54,7 +54,7 @@ export default function Login(props) {
         </Button>
       </Form>
 
-      {Object.keys(errors).length > 0 && (
+      {Object.keys(errors).length > 0 && ( // display the errors below if they exist
         <div className="ui error message">
           <ul className="list">
             {Object.values(errors).map((value) => (

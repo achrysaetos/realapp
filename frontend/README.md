@@ -4,7 +4,7 @@
 * Handle verification of users and the implementation their token *(src/context/)*
 * Create queries and mutations to update the database *(src/graphql/)*
 * ... *(src/pages/)*
-* ... *(src/util/)*
+* Write helper functions for the parts of your app *(src/util/)*
 * Allow react to access your graphql server *(src/ApolloProvider.js)*
 * Write standard css for your app *(src/App.css)*
 * Serve each component of your app *(src/App.js)*
@@ -25,13 +25,13 @@
 &nbsp; **graphql/**\
 &nbsp; &nbsp; **...** -- create queries and mutations to update the database\
 &nbsp; **pages/**\
-&nbsp; &nbsp; **Home.js** -- \
-&nbsp; &nbsp; **Login.js** -- \
+&nbsp; &nbsp; **Home.js** -- display the PostForm and PostCard components using the FETCH_POSTS_QUERY\
+&nbsp; &nbsp; **Login.js** -- create the login page and decide what to do with user data\
 &nbsp; &nbsp; **Register.js** -- \
 &nbsp; &nbsp; **SinglePost.js** -- \
 &nbsp; **util/**\
 &nbsp; &nbsp; **AuthRoute.js** -- route to different pages if the user is logged in\
-&nbsp; &nbsp; **hooks.js** -- 
+&nbsp; &nbsp; **hooks.js** -- handle onChange, onSubmit, and values when dealing with forms
 
 &nbsp; **ApolloProvider.js** -- allow react to access your graphql server along with any cached data
 
