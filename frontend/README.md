@@ -1,6 +1,6 @@
 # FRONTEND
 
-* ... *(src/components/)*
+* Create react components for your pages *(src/components/)*
 * Handle verification of users and the implementation their token *(src/context/)*
 * Create queries and mutations to update the database *(src/graphql/)*
 * Call the graphql queries and mutations, and display your components *(src/pages/)*
@@ -20,7 +20,7 @@
 &nbsp; &nbsp; **LikeButton.js** -- create a like button and determine what happens when it is clicked\
 &nbsp; &nbsp; **MenuBar.js** -- create a complete, interactive navbar\
 &nbsp; &nbsp; **PostCard.js** -- create the card component that displays all the parts of a post\
-&nbsp; &nbsp; **PostForm.js** -- \
+&nbsp; &nbsp; **PostForm.js** -- create the form component that handles the creation of a new post\
 &nbsp; **context/**\
 &nbsp; &nbsp; **auth.js** -- verify that the user exists, and set/remove the user token on login/logout\
 &nbsp; **graphql/**\

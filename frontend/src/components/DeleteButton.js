@@ -16,7 +16,7 @@ export default function DeleteButton({ postId, commentId, callback }) {
       if (!commentId) {
         // Combine readQuery and writeQuery to fetch currently cached data and make selective modifications to it.
         // Changes are not pushed to the server here (but we already did that with calls to our mutation).
-        const data = proxy.readQuery({ query: FETCH_POSTS_QUERY }) // executes the query without re-rendering
+        const data = proxy.readQuery({ query: FETCH_POSTS_QUERY }) // execute the query without re-rendering
         proxy.writeQuery({ // write data to the cache
           query: FETCH_POSTS_QUERY,
           data: { getPosts: data.getPosts.filter((p) => p.id !== postId) } // remove the post
