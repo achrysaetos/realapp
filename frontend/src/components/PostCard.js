@@ -6,10 +6,10 @@ import moment from "moment"
 import { AuthContext } from "../context/auth"
 import LikeButton from "./LikeButton"
 import DeleteButton from "./DeleteButton"
-/* import MyPopup from '../util/MyPopup' */
 
 export default function PostCard({
-  post: { body, createdAt, id, username, likeCount, commentCount, likes },
+  // destructure the post to easily access all its parts
+  post: { body, createdAt, id, username, likeCount, commentCount, likes }, 
 }) {
   const { user } = useContext(AuthContext)
 
@@ -25,7 +25,7 @@ export default function PostCard({
       </Card.Content>
 
       <Card.Content extra>
-        <LikeButton user={user} post={{ id, likes, likeCount }} />
+        <LikeButton user={user} post={{ id, likes, likeCount }} /> {/* components can call other components, of course */}
         <Button labelPosition="right" as={Link} to={`/posts/${id}`}>
           <Button color="blue" basic>
             <Icon name="comments" />

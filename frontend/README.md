@@ -19,7 +19,7 @@
 &nbsp; &nbsp; **DeleteButton.js** -- create a delete button and determine what happens when it is clicked\
 &nbsp; &nbsp; **LikeButton.js** -- create a like button and determine what happens when it is clicked\
 &nbsp; &nbsp; **MenuBar.js** -- create a complete, interactive navbar\
-&nbsp; &nbsp; **PostCard.js** -- \
+&nbsp; &nbsp; **PostCard.js** -- create the card component that displays all the parts of a post\
 &nbsp; &nbsp; **PostForm.js** -- \
 &nbsp; **context/**\
 &nbsp; &nbsp; **auth.js** -- verify that the user exists, and set/remove the user token on login/logout\
