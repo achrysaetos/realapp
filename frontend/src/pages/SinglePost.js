@@ -8,34 +8,34 @@ import LikeButton from "../components/LikeButton"
 import DeleteButton from "../components/DeleteButton"
 import { SUBMIT_COMMENT_MUTATION } from "../graphql/SUBMIT_COMMENT_MUTATION"
 import { FETCH_POST_QUERY } from "../graphql/FETCH_POST_QUERY"
-//import MyPopup from '../util/MyPopup'
 
 export default function SinglePost(props) {
   const postId = props.match.params.postId
   const { user } = useContext(AuthContext)
-  const commentInputRef = useRef(null)
+  const commentInputRef = useRef(null) // returns a mutable ref object whose .current property is initialized to null
 
   const [comment, setComment] = useState("")
 
-  const { data: { getPost } = {} } = useQuery(FETCH_POST_QUERY, { variables: { postId } })
+  // store the result from FETCH_POST_QUERY in a variable called data, renaming it as getPost
+  const { data: { getPost } = {} } = useQuery(FETCH_POST_QUERY, { variables: { postId } }) 
 
   const [submitComment] = useMutation(SUBMIT_COMMENT_MUTATION, {
     update() {
-      setComment("")
-      commentInputRef.current.blur()
+      setComment("") // set the comment back as empty
+      commentInputRef.current.blur() // unfocus from the comment textbox
     },
     variables: { postId, body: comment }
   })
 
   function deletePostCallback() {
-    props.history.push("/")
+    props.history.push("/") // redirect back home
   }
 
   let postMarkup
   if (!getPost) {
     postMarkup = <p>Loading post..</p>
-  } else {
-    const { id, body, createdAt, username, comments, likes, likeCount } = getPost
+  } else { // destructure getPost so you can use all its variables
+    const { id, body, createdAt, username, comments, likes, likeCount } = getPost 
 
     postMarkup = (
       <Grid>
@@ -68,14 +68,14 @@ export default function SinglePost(props) {
                         placeholder="Comment.."
                         name="comment"
                         value={comment}
-                        onChange={(event) => setComment(event.target.value)}
+                        onChange={(event) => setComment(event.target.value)} // set comment to event.target.value
                         ref={commentInputRef}
                       />
                       <button
                         type="submit"
                         className="ui button teal"
                         disabled={comment.trim() === ""}
-                        onClick={submitComment}
+                        onClick={submitComment} // now call the mutation
                       >
                         Submit
                       </button>

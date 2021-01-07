@@ -6,7 +6,7 @@ import { AuthContext } from "../context/auth"
 import { useForm } from "../util/hooks"
 import { REGISTER_USER } from "../graphql/REGISTER_USER"
 
-export default function Register(props) {
+export default function Register(props) { // exactly the same as ./Login.js
   const context = useContext(AuthContext)
   const [errors, setErrors] = useState({})
 
