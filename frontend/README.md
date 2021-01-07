@@ -2,11 +2,11 @@
 
 * Allow react to access your graphql server *(src/ApolloProvider.js)*
 * Create the entry point to your app *(src/index.js)*
-* Serve each component of your app *(src/App.js)* <br/>
+* Serve each component of your app *(src/App.js)* <br/><br/>
 
 * Call the graphql queries and mutations, and display your components *(src/pages/)*
 * Create react components for your pages *(src/components/)*
-* Handle verification of users and the implementation their token *(src/context/)* <br/>
+* Handle verification of users and the implementation their token *(src/context/)* <br/><br/>
 
 * Create queries and mutations to update the database *(src/graphql/)*
 * Write helper functions for the parts of your app *(src/util/)*
