@@ -6,9 +6,9 @@ import { Button, Label, Icon } from "semantic-ui-react"
 import { LIKE_POST_MUTATION } from "../graphql/LIKE_POST_MUTATION"
 
 export default function LikeButton({ user, post: { id, likeCount, likes } }) {
-  const [liked, setLiked] = useState(false)
+  const [liked, setLiked] = useState(false) // liked is initially false, use setLiked to change it
 
-  useEffect(() => {
+  useEffect(() => { // toggle the button based on the current user
     if (user && likes.find((like) => like.username === user.username)) {
       setLiked(true)
     } else {
@@ -19,7 +19,7 @@ export default function LikeButton({ user, post: { id, likeCount, likes } }) {
   const [likePost] = useMutation(LIKE_POST_MUTATION, { variables: { postId: id } })
 
   const likeButton = user ? (
-    liked ? (
+    liked ? ( // no proxy needed here because we're not accessing any cache, just changing the styles
       <Button color="teal">
         <Icon name="heart" />
       </Button>
@@ -35,7 +35,7 @@ export default function LikeButton({ user, post: { id, likeCount, likes } }) {
   )
 
   return (
-    <Button as="div" labelPosition="right" onClick={likePost}>
+    <Button as="div" labelPosition="right" onClick={likePost}> {/* call the mutation onClick */}
       {likeButton}
       <Label basic color="teal" pointing="left">
         {likeCount}
