@@ -11,5 +11,6 @@ A fully functional social media web app, built with React, GraphQL, MongoDB, and
 
 
 ## To Do
+
 Add subscription services (follow functionality)\
 Add live chat functionality
