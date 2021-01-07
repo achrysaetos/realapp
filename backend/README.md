@@ -10,10 +10,10 @@
 
 **graphql/**\
 &nbsp; **resolvers/**\
-&nbsp; &nbsp; **comments.js/** -- create mutations for creating and deleting comments\
-&nbsp; &nbsp; **index.js/** -- combine all the resolvers so you can actually use them\
-&nbsp; &nbsp; **post.js/** -- create queries for getting one/many posts, and mutations for creating/deleting/liking posts\
-&nbsp; &nbsp; **users.js/** -- create mutations for logging in and registering users\
+&nbsp; &nbsp; **comments.js** -- create mutations for creating and deleting comments\
+&nbsp; &nbsp; **index.js** -- combine all the resolvers so you can actually use them\
+&nbsp; &nbsp; **post.js** -- create queries for getting one/many posts, and mutations for creating/deleting/liking posts\
+&nbsp; &nbsp; **users.js** -- create mutations for logging in and registering users\
 &nbsp; **typeDefs** -- define your schema's types (the types of data a client can read and write to your data graph)
 
 **models/**\
