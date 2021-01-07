@@ -1,20 +1,22 @@
 # FRONTEND
 
+* Allow react to access your graphql server *(src/ApolloProvider.js)*
+* Create the entry point to your app *(src/index.js)*
+* Serve each component of your app *(src/App.js)*
+
+* Call the graphql queries and mutations, and display your components *(src/pages/)*
 * Create react components for your pages *(src/components/)*
 * Handle verification of users and the implementation their token *(src/context/)*
+
 * Create queries and mutations to update the database *(src/graphql/)*
-* Call the graphql queries and mutations, and display your components *(src/pages/)*
 * Write helper functions for the parts of your app *(src/util/)*
-* Allow react to access your graphql server *(src/ApolloProvider.js)*
-* Write standard css for your app *(src/App.css)*
-* Serve each component of your app *(src/App.js)*
 * Allow your app access to tailwind's styles *(src/index.css)*
-* Create the entry point to your app *(src/index.js)*
+* Write standard css for your app *(src/App.css)*
 
 
 ## Important files and folders:
 
-**src**\
+**src/**\
 &nbsp; **components/**\
 &nbsp; &nbsp; **DeleteButton.js** -- create a delete button and determine what happens when it is clicked\
 &nbsp; &nbsp; **LikeButton.js** -- create a like button and determine what happens when it is clicked\

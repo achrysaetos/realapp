@@ -2,13 +2,13 @@
 
 * Set up access to your database *(server.js)*
 * Set up document organization *(models/)*
-* Create queries and mutations to read and write data *(graphql/)*
+* Create the rules by which queries and mutations can read and write data *(graphql/)*
 * Validate user input and authorization *(util/)*
 
 
 ## Important files and folders:
 
-**graphql**\
+**graphql/**\
 &nbsp; **resolvers/**\
 &nbsp; &nbsp; **comments.js/** -- create mutations for creating and deleting comments\
 &nbsp; &nbsp; **index.js/** -- combine all the resolvers so you can actually use them\
